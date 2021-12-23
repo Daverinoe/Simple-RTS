@@ -7,6 +7,7 @@
 [ext_resource path="res://Scenes/Units/Accessories/hair_ponytail.tscn" type="PackedScene" id=5]
 
 [sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
 albedo_texture = ExtResource( 1 )
 
 [node name="warrior_F" instance=ExtResource( 4 )]
@@ -20,21 +21,21 @@ bones/31/bound_children = [ NodePath("swordAttach") ]
 material/0 = SubResource( 1 )
 
 [node name="shieldAttach" type="BoneAttachment" parent="Root/Skeleton" index="1"]
-transform = Transform( 0.0617518, 0.126811, -0.990011, -0.209507, -0.968154, -0.137076, -0.975855, 0.215878, -0.0332172, 0.518108, 1.45998, 0.203279 )
+transform = Transform( -0.0628723, -0.0912189, -0.993853, -0.971874, 0.232056, 0.0401856, 0.226962, 0.968416, -0.103242, 0.422098, 1.87895, 0.661152 )
 bone_name = "LeftHand"
 
 [node name="shield" parent="Root/Skeleton/shieldAttach" index="0" instance=ExtResource( 2 )]
 transform = Transform( -0.137201, -0.989007, -0.055223, -0.971073, 0.123298, 0.204465, -0.195411, 0.0816807, -0.977315, 0.0039587, 0.00808001, -0.063193 )
 
 [node name="swordAttach" type="BoneAttachment" parent="Root/Skeleton" index="2"]
-transform = Transform( 0.0952727, -0.171611, -0.980556, -0.229061, -0.962376, 0.146173, -0.96874, 0.210675, -0.130997, -0.499075, 1.43777, 0.0174366 )
+transform = Transform( 0.0833307, -0.151228, -0.984989, 0.384753, -0.906895, 0.171786, -0.91925, -0.393292, -0.0173869, -0.544606, 1.45303, -0.0970119 )
 bone_name = "RightHand"
 
 [node name="sword" parent="Root/Skeleton/swordAttach" index="0" instance=ExtResource( 3 )]
 transform = Transform( -0.110379, -0.77089, -0.0753656, 0.448674, -0.208968, 0.177859, -0.191072, -0.0453822, 0.461179, 0.0310805, 0.103669, -0.0499409 )
 
 [node name="hairAttachment" type="BoneAttachment" parent="Root/Skeleton" index="3"]
-transform = Transform( 1.00001, -4.87491e-05, 1.22488e-05, 4.97997e-05, 0.95893, -0.283642, 5.66244e-06, 0.283642, 0.95893, -0.0301611, 2.46705, 0.253462 )
+transform = Transform( 1.00001, 2.04425e-07, 2.55182e-07, 2.36556e-07, 0.995078, -0.0990905, -2.61702e-07, 0.0990904, 0.995078, -0.0247141, 2.44637, 0.336203 )
 bone_name = "Head"
 
 [node name="hair_ponytail" parent="Root/Skeleton/hairAttachment" index="0" instance=ExtResource( 5 )]
