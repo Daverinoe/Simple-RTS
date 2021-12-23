@@ -1,0 +1,73 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Models/Pieces/town/wallWoodArch.glb" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Models/Pieces/town/wallWoodArchTopDetail.glb" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Models/Pieces/town/rockLarge.glb" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Models/Pieces/town/roofGable.glb" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Models/Pieces/town/rockWide.glb" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/Pieces/town/wallWood.glb" type="PackedScene" id=6]
+
+[node name="goldMine" type="Spatial"]
+
+[node name="rockLarge" parent="." instance=ExtResource( 3 )]
+transform = Transform( 2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0 )
+
+[node name="rockWide" parent="." instance=ExtResource( 5 )]
+transform = Transform( -1.50395, 0, -1.99703, 0, 2.5, 0, 1.99703, 0, -1.50395, -0.101087, 0, 0.074457 )
+
+[node name="entrance" type="Spatial" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="wallWoodArchTopDetail" parent="entrance" instance=ExtResource( 2 )]
+transform = Transform( 1.31134e-07, 0, -1, 0, 1, 0, 1, 0, 1.31134e-07, 0, 1, -4 )
+
+[node name="wallWoodArchTopDetail2" parent="entrance" instance=ExtResource( 2 )]
+transform = Transform( -2.18557e-07, 0, 1, 0, 1, 0, -1, 0, -2.18557e-07, -1, 1, -4.9 )
+
+[node name="wallWood" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -3.97096 )
+
+[node name="wallWood2" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -3.97096 )
+
+[node name="wallWood3" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -3.97096 )
+
+[node name="wallWood4" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1, -3.97096 )
+
+[node name="wallWood5" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -2.97096 )
+
+[node name="wallWood6" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -2.97096 )
+
+[node name="wallWood7" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -2.97096 )
+
+[node name="wallWood8" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1, -2.97096 )
+
+[node name="wallWood9" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0, -1.97096 )
+
+[node name="wallWood10" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 0, -1.97096 )
+
+[node name="wallWood11" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1.97096 )
+
+[node name="wallWood12" parent="entrance" instance=ExtResource( 6 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.9, 1, -1.97096 )
+
+[node name="wallWoodArch" parent="entrance" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, -4 )
+
+[node name="wallWoodArch2" parent="entrance" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -1, 0, -4.9 )
+
+[node name="roofGable" parent="entrance" instance=ExtResource( 4 )]
+transform = Transform( -9.63836e-08, 0, 2.205, 0, 1.25, 0, -3, 0, -1.31134e-07, -0.5, 1.9, -3.1 )
