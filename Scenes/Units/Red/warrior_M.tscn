@@ -1,0 +1,42 @@
+[gd_scene load_steps=7 format=2]
+
+[ext_resource path="res://Assets/Models/Units/Warrior/warrior_M.glb" type="PackedScene" id=1]
+[ext_resource path="res://Scenes/Units/Accessories/sword.tscn" type="PackedScene" id=2]
+[ext_resource path="res://Scenes/Units/Accessories/shield.tscn" type="PackedScene" id=3]
+[ext_resource path="res://Scenes/Units/Accessories/beard.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Textures/Units/fantasyMaleA.png" type="Texture" id=5]
+
+[sub_resource type="SpatialMaterial" id=1]
+resource_local_to_scene = true
+albedo_texture = ExtResource( 5 )
+
+[node name="warrior_M" instance=ExtResource( 1 )]
+
+[node name="Skeleton" parent="Root" index="0"]
+bones/18/bound_children = [ NodePath("beardAttach") ]
+bones/22/bound_children = [ NodePath("shieldAttach") ]
+bones/31/bound_children = [ NodePath("swordAttach") ]
+
+[node name="characterLargeMale" parent="Root/Skeleton" index="0"]
+material/0 = SubResource( 1 )
+
+[node name="swordAttach" type="BoneAttachment" parent="Root/Skeleton" index="1"]
+transform = Transform( 0.102726, -0.272432, -0.956684, -0.547938, -0.818191, 0.174157, -0.830188, 0.506307, -0.233324, -0.473061, 1.51213, 0.390014 )
+bone_name = "RightHand"
+
+[node name="sword" parent="Root/Skeleton/swordAttach" index="0" instance=ExtResource( 2 )]
+transform = Transform( -0.00289232, -0.69232, -0.0738173, 0.468111, -0.0400552, 0.173353, -0.175675, -0.0953477, 0.463141, -0.015816, 0.104088, -0.0633619 )
+
+[node name="shieldAttach" type="BoneAttachment" parent="Root/Skeleton" index="2"]
+transform = Transform( 0.0640404, 0.266727, -0.96165, 0.568687, -0.801605, -0.184464, -0.820058, -0.535062, -0.203017, 0.469453, 1.53446, -0.194387 )
+bone_name = "LeftHand"
+
+[node name="shield" parent="Root/Skeleton/shieldAttach" index="0" instance=ExtResource( 3 )]
+transform = Transform( -0.0833066, -0.989021, -0.122055, -0.96538, 0.0497195, 0.256064, -0.247186, 0.139163, -0.958923, 0.00233924, 0.00738883, -0.0391093 )
+
+[node name="beardAttach" type="BoneAttachment" parent="Root/Skeleton" index="3"]
+transform = Transform( 1.00001, 1.63941e-08, 2.39575e-07, 3.00784e-08, 0.98136, -0.192176, -2.38231e-07, 0.192176, 0.98136, 0.00105551, 2.52694, 0.233688 )
+bone_name = "Head"
+
+[node name="beard" parent="Root/Skeleton/beardAttach" index="0" instance=ExtResource( 4 )]
+transform = Transform( 0.5, -5.68434e-14, -2.27374e-13, 0, 0.5, -5.96046e-08, 0, 0, 0.5, 0.00299436, 0.131193, 0.14373 )
