@@ -1,3 +1,79 @@
-[gd_scene format=2]
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Assets/Models/Pieces/castle/wall_detail.glb" type="PackedScene" id=1]
+[ext_resource path="res://Assets/Models/Pieces/castle/tower.glb" type="PackedScene" id=2]
+[ext_resource path="res://Assets/Models/Pieces/castle/battlement_cornerOuter.glb" type="PackedScene" id=3]
+[ext_resource path="res://Assets/Models/Pieces/castle/wall_gate.glb" type="PackedScene" id=4]
+[ext_resource path="res://Assets/Models/Pieces/castle/wall.glb" type="PackedScene" id=5]
+[ext_resource path="res://Assets/Models/Pieces/castle/battlement.glb" type="PackedScene" id=6]
+[ext_resource path="res://Assets/Models/Pieces/castle/tower_top.glb" type="PackedScene" id=7]
+[ext_resource path="res://Assets/Models/Pieces/castle/wall_low.glb" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Models/Pieces/castle/tower_base.glb" type="PackedScene" id=9]
+[ext_resource path="res://Assets/Models/Pieces/castle/battlement_half.glb" type="PackedScene" id=10]
 
 [node name="barracks" type="Spatial"]
+
+[node name="tower" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, -1.5 )
+
+[node name="tower_base" parent="tower" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="tower_top" parent="tower" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="tower2" parent="." instance=ExtResource( 2 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 1, 0.5 )
+
+[node name="tower_base" parent="tower2" instance=ExtResource( 9 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0 )
+
+[node name="tower_top" parent="tower2" instance=ExtResource( 7 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+
+[node name="wall" parent="." instance=ExtResource( 5 )]
+
+[node name="wall2" parent="wall" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1 )
+
+[node name="wall3" parent="wall" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, 0 )
+
+[node name="wall4" parent="wall" instance=ExtResource( 5 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0, -1 )
+
+[node name="wall_low" parent="wall" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, 0 )
+
+[node name="wall_low2" parent="wall" instance=ExtResource( 8 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 1, -1 )
+
+[node name="wall_detail" parent="wall" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0, 0, 0.5 )
+
+[node name="wall_detail2" parent="wall" instance=ExtResource( 1 )]
+transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, -1.5 )
+
+[node name="wall_gate" parent="wall" instance=ExtResource( 4 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.800639, 0, -0.5 )
+
+[node name="battlement" parent="." instance=ExtResource( 6 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.8, 1, -0.5 )
+
+[node name="battlement_cornerOuter" parent="battlement" instance=ExtResource( 3 )]
+transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.6, 0.5, -2 )
+
+[node name="battlement_cornerOuter2" parent="battlement" instance=ExtResource( 3 )]
+transform = Transform( -1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, 0.6, 0.5, -2 )
+
+[node name="battlement_cornerOuter3" parent="battlement" instance=ExtResource( 3 )]
+transform = Transform( 1.31134e-07, 0, 1, 0, 1, 0, -1, 0, 1.31134e-07, 0.6, 0.5, -1.7 )
+
+[node name="battlement_cornerOuter4" parent="battlement" instance=ExtResource( 3 )]
+transform = Transform( 1, 0, -1.74846e-07, 0, 1, 0, 1.74846e-07, 0, 1, -0.6, 0.5, -1.7 )
+
+[node name="battlement_half" parent="battlement" instance=ExtResource( 10 )]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.2, 0.5, -1.8 )
+
+[node name="battlement_half2" parent="battlement" instance=ExtResource( 10 )]
+transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.2, 0.5, -1.9 )
