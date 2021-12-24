@@ -10,6 +10,10 @@ var originalCameraPosition : Vector3 = Vector3()
 var mouseCameraMove : bool = false
 
 export(float, 0, 500) var heightAboveTerrain : float = 50.0
+export(float, 0, 10) var zoomSpeed : float = 1.0
+var heightMax : float = 100.0
+var heightMin : float = 10.0
+
 
 
 func _physics_process(delta: float) -> void:
@@ -25,14 +29,32 @@ func _physics_process(delta: float) -> void:
 		var ref = get_viewport().get_mouse_position()
 		originalMousePosition = ref
 		originalCameraPosition = transform.origin
+		mouseCameraMove = true
+	elif Input.is_action_just_released("scrollMouseMiddleButton"):
+		mouseCameraMove = false
 	# This happens while 'move_map' is pressed
 	if Input.is_action_pressed("scrollMouseMiddleButton"):
 		_do_mouse_movement()
 	
+	if Input.is_action_just_released("mouseScrollDown"):
+		_set_zoom(false)
+	elif Input.is_action_just_released("mouseScrollUp"):
+		_set_zoom(true)
 	
 	var linear_velocity = Vector3(scrollDirection.x, 0, scrollDirection.y) * scrollSpeed
 	if !mouseCameraMove:
 		move_and_slide(linear_velocity, Vector3( 0, 1, 0 ), true, 1, 0.5, true)
+
+
+func _set_zoom(zoomDirection: bool) -> void:
+	if zoomDirection:
+		#zoomIn
+		var newHeight = heightAboveTerrain - zoomSpeed
+		heightAboveTerrain = clamp(newHeight, heightMin, heightMax)
+	else:
+		#zoomOut
+		var newHeight = heightAboveTerrain + zoomSpeed
+		heightAboveTerrain = clamp(newHeight, heightMin, heightMax)
 
 
 func _do_mouse_movement() -> void:
@@ -57,12 +79,6 @@ func _set_height() -> void:
 #	$RayCast.force_raycast_update()
 	var rayCollisionPoint = $RayCast.get_collision_point()
 	self.transform.origin.y = rayCollisionPoint.y + heightAboveTerrain
-
-
-func _input(event: InputEvent) -> void:
-	if event.is_action_pressed("scrollMouseMiddleButton"):
-		originalMousePosition = event.position
-		mouseCameraMove = true
 
 
 # Should probably replace this with just a check through code, but this came
