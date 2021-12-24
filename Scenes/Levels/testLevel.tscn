@@ -1,0 +1,70 @@
+[gd_scene load_steps=7 format=2]
+
+[sub_resource type="BoxShape" id=1]
+
+[sub_resource type="CubeMesh" id=2]
+
+[sub_resource type="OpenSimplexNoise" id=5]
+seed = 11
+period = 58.7
+persistence = 0.719
+lacunarity = 3.1
+
+[sub_resource type="NoiseTexture" id=6]
+seamless = true
+noise = SubResource( 5 )
+
+[sub_resource type="SpatialMaterial" id=4]
+albedo_color = Color( 0.129412, 0.352941, 0.0431373, 1 )
+albedo_texture = SubResource( 6 )
+
+[sub_resource type="BoxShape" id=3]
+
+[node name="level" type="Spatial"]
+
+[node name="cameraBounds" type="Spatial" parent="."]
+
+[node name="StaticBody" type="StaticBody" parent="cameraBounds"]
+transform = Transform( 1, 0, 0, 0, 50, 0, 0, 0, 200, -50, 50, 0 )
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape" type="CollisionShape" parent="cameraBounds/StaticBody"]
+shape = SubResource( 1 )
+
+[node name="StaticBody2" type="StaticBody" parent="cameraBounds"]
+transform = Transform( 1, 0, 0, 0, 50, 0, 0, 0, 200, 50, 50, 0 )
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape" type="CollisionShape" parent="cameraBounds/StaticBody2"]
+shape = SubResource( 1 )
+
+[node name="StaticBody3" type="StaticBody" parent="cameraBounds"]
+transform = Transform( -4.37114e-08, 0, 200, 0, 50, 0, -1, 0, -8.74228e-06, 0, 50, 50 )
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape" type="CollisionShape" parent="cameraBounds/StaticBody3"]
+shape = SubResource( 1 )
+
+[node name="StaticBody4" type="StaticBody" parent="cameraBounds"]
+transform = Transform( -4.37114e-08, 0, 200, 0, 50, 0, -1, 0, -8.74228e-06, 0, 50, -50 )
+collision_layer = 32768
+collision_mask = 32768
+
+[node name="CollisionShape" type="CollisionShape" parent="cameraBounds/StaticBody4"]
+shape = SubResource( 1 )
+
+[node name="ground" type="Spatial" parent="."]
+
+[node name="MeshInstance" type="MeshInstance" parent="ground"]
+transform = Transform( 70, 0, 0, 0, 1, 0, 0, 0, 70, 0, 0, 0 )
+mesh = SubResource( 2 )
+skeleton = NodePath("StaticBody")
+material/0 = SubResource( 4 )
+
+[node name="StaticBody" type="StaticBody" parent="ground/MeshInstance"]
+
+[node name="CollisionShape" type="CollisionShape" parent="ground/MeshInstance/StaticBody"]
+shape = SubResource( 3 )
