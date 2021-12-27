@@ -154,6 +154,7 @@ rect_min_size = Vector2( 30, 30 )
 
 [node name="cameraBall" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0 )
+visible = false
 collision_mask = 32769
 script = ExtResource( 2 )
 scrollSpeed = 50
