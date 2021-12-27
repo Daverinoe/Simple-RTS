@@ -21,7 +21,7 @@ jobs:
           ITCH_GAME: simplerts
           ITCH_USER: Daverinoe
           PACKAGE: Windows.Desktop.zip
-          VERSION: ${{ steps.download-windows.outputs.version }}
+          VERSION: ${{ steps.upload-windows.outputs.version }}
   release_HTML:
     runs-on: ubuntu-latest
     steps:
@@ -40,7 +40,7 @@ jobs:
           ITCH_GAME: simplerts
           ITCH_USER: Daverinoe
           PACKAGE: HTML5.zip
-          VERSION: ${{ steps.download-windows.outputs.version }}
+          VERSION: ${{ steps.upload-html5.outputs.version }}
   release_OSX:
       runs-on: ubuntu-latest
       steps:
@@ -55,11 +55,11 @@ jobs:
           uses: josephbmanley/butler-publish-itchio-action@master
           env:
             BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
-            CHANNEL: html5
+            CHANNEL: osx
             ITCH_GAME: simplerts
             ITCH_USER: Daverinoe
             PACKAGE: Mac.OSX.zip
-            VERSION: ${{ steps.download-windows.outputs.version }}
+            VERSION: ${{ steps.upload-OSX.outputs.version }}
   release_linux:
       runs-on: ubuntu-latest
       steps:
@@ -78,4 +78,4 @@ jobs:
             ITCH_GAME: simplerts
             ITCH_USER: Daverinoe
             PACKAGE: LinuxX11.zip
-            VERSION: ${{ steps.download-windows.outputs.version }}
+            VERSION: ${{ steps.upload-linux.outputs.version }}
