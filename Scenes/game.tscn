@@ -192,7 +192,7 @@ skeleton = NodePath("../..")
 material/0 = null
 
 [node name="Camera" type="Camera" parent="cameraBall"]
-transform = Transform( 1, 0, 0, 0, 0.559193, 0.829038, 0, -0.829038, 0.559193, 0, 0, 0 )
+transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
 
 [node name="RayCast" type="RayCast" parent="cameraBall"]
 enabled = true
