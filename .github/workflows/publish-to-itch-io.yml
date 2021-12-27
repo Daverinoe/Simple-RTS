@@ -22,3 +22,60 @@ jobs:
           ITCH_USER: Daverinoe
           PACKAGE: Windows.Desktop.zip
           VERSION: ${{ steps.download-windows.outputs.version }}
+  release_HTML:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Upload HTML5 version
+        id: upload-html5
+        uses: dsaltares/fetch-gh-release-asset@master
+        with:
+          file: HTML5.zip
+        env:
+          GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
+      - name: deploy to itch.io (HTML5)
+        uses: josephbmanley/butler-publish-itchio-action@master
+        env:
+          BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+          CHANNEL: html5
+          ITCH_GAME: simplerts
+          ITCH_USER: Daverinoe
+          PACKAGE: HTML5.zip
+          VERSION: ${{ steps.download-windows.outputs.version }}
+  release_OSX:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Upload OSX version
+          id: upload-OSX
+          uses: dsaltares/fetch-gh-release-asset@master
+          with:
+            file: Mac.OSX.zip
+          env:
+            GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
+        - name: deploy to itch.io (OSX)
+          uses: josephbmanley/butler-publish-itchio-action@master
+          env:
+            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+            CHANNEL: html5
+            ITCH_GAME: simplerts
+            ITCH_USER: Daverinoe
+            PACKAGE: Mac.OSX.zip
+            VERSION: ${{ steps.download-windows.outputs.version }}
+  release_linux:
+      runs-on: ubuntu-latest
+      steps:
+        - name: Upload linux version
+          id: upload-linux
+          uses: dsaltares/fetch-gh-release-asset@master
+          with:
+            file: LinuxX11.zip
+          env:
+            GITHUB_TOKEN: "${{ secrets.GH_CREDENTIALS }}"
+        - name: deploy to itch.io (Linux)
+          uses: josephbmanley/butler-publish-itchio-action@master
+          env:
+            BUTLER_CREDENTIALS: ${{ secrets.BUTLER_CREDENTIALS }}
+            CHANNEL: linux
+            ITCH_GAME: simplerts
+            ITCH_USER: Daverinoe
+            PACKAGE: LinuxX11.zip
+            VERSION: ${{ steps.download-windows.outputs.version }}
