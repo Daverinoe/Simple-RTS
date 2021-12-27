@@ -25,16 +25,17 @@ func _physics_process(delta: float) -> void:
 	
 	# Do middle-mouse button movement first, for reasons?
 	# This happens once 'move_map' is pressed
-	if Input.is_action_just_pressed("scrollMouseMiddleButton"):
-		var ref = get_viewport().get_mouse_position()
-		originalMousePosition = ref
-		originalCameraPosition = transform.origin
-		mouseCameraMove = true
-	elif Input.is_action_just_released("scrollMouseMiddleButton"):
-		mouseCameraMove = false
+	# Middle mouse movement is broken until I can test for collisions through code
+#	if Input.is_action_just_pressed("scrollMouseMiddleButton"):
+#		var ref = get_viewport().get_mouse_position()
+#		originalMousePosition = ref
+#		originalCameraPosition = transform.origin
+#		mouseCameraMove = true
+#	elif Input.is_action_just_released("scrollMouseMiddleButton"):
+#		mouseCameraMove = false
 	# This happens while 'move_map' is pressed
-	if Input.is_action_pressed("scrollMouseMiddleButton"):
-		_do_mouse_movement()
+#	if Input.is_action_pressed("scrollMouseMiddleButton"):
+#		_do_mouse_movement()
 	
 	if Input.is_action_just_released("mouseScrollDown"):
 		_set_zoom(false)

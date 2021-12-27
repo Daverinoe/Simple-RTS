@@ -59,7 +59,7 @@ shape = SubResource( 1 )
 [node name="ground" type="Spatial" parent="."]
 
 [node name="MeshInstance" type="MeshInstance" parent="ground"]
-transform = Transform( 70, 0, 0, 0, 1, 0, 0, 0, 70, 0, 0, 0 )
+transform = Transform( 100, 0, 0, 0, 1, 0, 0, 0, 100, 0, 0, 0 )
 mesh = SubResource( 2 )
 skeleton = NodePath("StaticBody")
 material/0 = SubResource( 4 )

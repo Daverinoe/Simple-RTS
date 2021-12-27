@@ -16,7 +16,7 @@
 [node name="control" type="Control" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -24,6 +24,7 @@ __meta__ = {
 [node name="ui" type="Control" parent="control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -33,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 margin_left = 20.0
 margin_top = 20.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -40,33 +42,33 @@ __meta__ = {
 [node name="VBoxContainer" type="VBoxContainer" parent="control/ui/HBoxContainer"]
 margin_right = 300.0
 margin_bottom = 1420.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="mapContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
 margin_right = 300.0
+mouse_filter = 2
 
 [node name="minimap" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer"]
 margin_right = 300.0
+mouse_filter = 2
 script = ExtResource( 3 )
 
-[node name="map" type="TextureRect" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap"]
+[node name="mapButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap"]
 margin_right = 500.0
-margin_bottom = 500.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-texture = ExtResource( 6 )
+margin_bottom = 498.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource( 6 )
 expand = true
-stretch_mode = 1
-__meta__ = {
-"_edit_use_anchors_": false
-}
 
 [node name="unitContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
 margin_top = 4.0
 margin_right = 300.0
 margin_bottom = 404.0
+mouse_filter = 2
 
 [node name="unitList" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/unitContainer"]
 margin_right = 300.0
@@ -75,10 +77,19 @@ rect_min_size = Vector2( 300, 400 )
 size_flags_horizontal = 0
 script = ExtResource( 4 )
 
+[node name="GridContainer" type="GridContainer" parent="control/ui/HBoxContainer/VBoxContainer/unitContainer/unitList"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+columns = 4
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="commandContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
 margin_top = 408.0
 margin_right = 300.0
 margin_bottom = 708.0
+mouse_filter = 2
 
 [node name="commands" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer"]
 margin_right = 300.0
@@ -91,6 +102,7 @@ script = ExtResource( 5 )
 margin_top = 712.0
 margin_right = 300.0
 margin_bottom = 912.0
+mouse_filter = 2
 
 [node name="commands" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer2"]
 margin_right = 300.0
@@ -100,6 +112,7 @@ rect_min_size = Vector2( 200, 200 )
 [node name="menus" type="Control" parent="control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -107,6 +120,7 @@ __meta__ = {
 [node name="mainMenu" type="Control" parent="control/menus"]
 margin_right = 40.0
 margin_bottom = 40.0
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -114,7 +128,7 @@ __meta__ = {
 [node name="scrollBoundaries" type="Control" parent="control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-mouse_filter = 1
+mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -245,11 +259,15 @@ material/0 = null
 
 [node name="Camera" type="Camera" parent="cameraBall"]
 transform = Transform( 1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0 )
+current = true
+far = 500.0
 
 [node name="RayCast" type="RayCast" parent="cameraBall"]
 enabled = true
 cast_to = Vector3( 0, -1000, 0 )
 
+[connection signal="button_down" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" method="_on_mapButton_button_down"]
+[connection signal="gui_input" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" method="_on_mapButton_gui_input"]
 [connection signal="mouse_entered" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_entered"]
 [connection signal="mouse_exited" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_exited"]
 [connection signal="mouse_entered" from="control/scrollBoundaries/leftMargin/left" to="cameraBall" method="_on_left_mouse_entered"]
