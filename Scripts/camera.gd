@@ -26,16 +26,16 @@ func _physics_process(delta: float) -> void:
 	# Do middle-mouse button movement first, for reasons?
 	# This happens once 'move_map' is pressed
 	# Middle mouse movement is broken until I can test for collisions through code
-#	if Input.is_action_just_pressed("scrollMouseMiddleButton"):
-#		var ref = get_viewport().get_mouse_position()
-#		originalMousePosition = ref
-#		originalCameraPosition = transform.origin
-#		mouseCameraMove = true
-#	elif Input.is_action_just_released("scrollMouseMiddleButton"):
-#		mouseCameraMove = false
+	if Input.is_action_just_pressed("scrollMouseMiddleButton"):
+		var ref = get_viewport().get_mouse_position()
+		originalMousePosition = ref
+		originalCameraPosition = transform.origin
+		mouseCameraMove = true
+	elif Input.is_action_just_released("scrollMouseMiddleButton"):
+		mouseCameraMove = false
 	# This happens while 'move_map' is pressed
-#	if Input.is_action_pressed("scrollMouseMiddleButton"):
-#		_do_mouse_movement()
+	if Input.is_action_pressed("scrollMouseMiddleButton"):
+		_do_mouse_movement()
 	
 	if Input.is_action_just_released("mouseScrollDown"):
 		_set_zoom(false)
@@ -80,6 +80,11 @@ func _set_height() -> void:
 #	$RayCast.force_raycast_update()
 	var rayCollisionPoint = $RayCast.get_collision_point()
 	self.transform.origin.y = rayCollisionPoint.y + heightAboveTerrain
+
+
+func _on_minimap_minimap_clicked(clickPosition) -> void:
+	transform.origin.x = clickPosition.x
+	transform.origin.z = clickPosition.y
 
 
 # Should probably replace this with just a check through code, but this came
@@ -146,3 +151,5 @@ func _on_bottomRight_mouse_entered() -> void:
 
 func _on_bottomRight_mouse_exited() -> void:
 	mouseScroll -= Vector2(-1, 1)
+
+

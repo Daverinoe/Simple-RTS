@@ -55,6 +55,7 @@ mouse_filter = 2
 margin_right = 300.0
 mouse_filter = 2
 script = ExtResource( 3 )
+levelPath = NodePath("../../../../../../level")
 
 [node name="mapButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap"]
 margin_right = 500.0
@@ -63,6 +64,9 @@ size_flags_horizontal = 4
 size_flags_vertical = 4
 texture_normal = ExtResource( 6 )
 expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="unitContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
 margin_top = 4.0
@@ -266,7 +270,7 @@ far = 500.0
 enabled = true
 cast_to = Vector3( 0, -1000, 0 )
 
-[connection signal="button_down" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" method="_on_mapButton_button_down"]
+[connection signal="minimap_clicked" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" to="cameraBall" method="_on_minimap_minimap_clicked"]
 [connection signal="gui_input" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" method="_on_mapButton_gui_input"]
 [connection signal="mouse_entered" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_entered"]
 [connection signal="mouse_exited" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_exited"]
