@@ -16,7 +16,7 @@ var heightMin : float = 10.0
 
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	_get_scroll_direction()
 	# We don't want to move on the y-axis with scroll movement.
 	# Instead y-position will be handle by a raycast, so that the camera
@@ -44,7 +44,7 @@ func _physics_process(delta: float) -> void:
 	
 	var linear_velocity = Vector3(scrollDirection.x, 0, scrollDirection.y) * scrollSpeed
 	if !mouseCameraMove:
-		move_and_slide(linear_velocity, Vector3( 0, 1, 0 ), true, 1, 0.5, true)
+		linear_velocity = move_and_slide(linear_velocity, Vector3( 0, 1, 0 ), true, 1, 0.5, true)
 
 
 func _set_zoom(zoomDirection: bool) -> void:

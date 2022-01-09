@@ -1,16 +1,34 @@
 extends Panel
 
+var portraitScene = preload("res://Scenes/UI/Portrait.tscn")
 
-# Declare member variables here. Examples:
-# var a: int = 2
-# var b: String = "text"
+var inList : Dictionary = {}
+var error
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	pass # Replace with function body.
+	error = SignalBus.connect("objectSelected", self, "somethingSelected")
+	error = SignalBus.connect("objectDeselected", self, "somethingDeselected")
+
+func addPortrait(object) -> void:
+	var objectID = object.get_instance_id()
+	if !inList.has(objectID):
+		var newPortrait = portraitScene.instance()
+		# This is where I would pass in any variables I need to
+		$GridContainer.call_deferred("add_child", newPortrait)
+		newPortrait.get_node("portraitImage").texture = object.portrait
+		inList[objectID] = newPortrait
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta: float) -> void:
-#	pass
+func removePortrait(object) -> void:
+	var objectID = object.get_instance_id()
+	if inList.has(objectID):
+		var portrait = inList[objectID] 
+		portrait.queue_free()
+		error = inList.erase(objectID)
+
+
+func somethingSelected(object) -> void:
+	addPortrait(object)
+
+func somethingDeselected(object) -> void:
+	removePortrait(object)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Scenes/Levels/testLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://Scripts/camera.gd" type="Script" id=2]
@@ -6,8 +6,12 @@
 [ext_resource path="res://Scripts/UI/unitList.gd" type="Script" id=4]
 [ext_resource path="res://Scripts/UI/commands.gd" type="Script" id=5]
 [ext_resource path="res://Assets/Textures/test_map.png" type="Texture" id=6]
-[ext_resource path="res://Scripts/UI/buttonMargins.gd" type="Script" id=7]
-[ext_resource path="res://Assets/Textures/icon.png" type="Texture" id=8]
+[ext_resource path="res://Assets/Textures/UI/MiniButton04.png" type="Texture" id=7]
+[ext_resource path="res://Assets/Textures/UI/MiniButton07.png" type="Texture" id=8]
+[ext_resource path="res://Scripts/control.gd" type="Script" id=9]
+[ext_resource path="res://Assets/Textures/UI/backdrop.png" type="Texture" id=10]
+[ext_resource path="res://Assets/Textures/UI/MiniButton06.png" type="Texture" id=11]
+[ext_resource path="res://Assets/Textures/UI/MiniButton11.png" type="Texture" id=12]
 
 [sub_resource type="SphereShape" id=1]
 
@@ -34,32 +38,40 @@ __meta__ = {
 [node name="HBoxContainer" type="HBoxContainer" parent="control/ui"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 20.0
-margin_top = 20.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="control/ui/HBoxContainer"]
-margin_right = 300.0
+[node name="TextureRect" type="TextureRect" parent="control/ui/HBoxContainer"]
+margin_right = 600.0
+margin_bottom = 1440.0
+texture = ExtResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="VBoxContainer" type="VBoxContainer" parent="control/ui/HBoxContainer/TextureRect"]
+margin_left = 20.0
+margin_top = 20.0
+margin_right = 304.0
 margin_bottom = 1420.0
 mouse_filter = 2
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="mapContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
+[node name="mapContainer" type="MarginContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer"]
 margin_right = 300.0
 mouse_filter = 2
 
-[node name="minimap" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer"]
+[node name="minimap" type="Panel" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/mapContainer"]
 margin_right = 300.0
 mouse_filter = 2
 script = ExtResource( 3 )
-levelPath = NodePath("../../../../../../level")
+levelPath = NodePath("../../../../../../../level")
 
-[node name="mapButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap"]
+[node name="mapButton" type="TextureButton" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/mapContainer/minimap"]
 margin_right = 500.0
 margin_bottom = 498.0
 size_flags_horizontal = 4
@@ -70,20 +82,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="unitContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
+[node name="unitContainer" type="MarginContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer"]
 margin_top = 4.0
 margin_right = 300.0
 margin_bottom = 404.0
 mouse_filter = 2
 
-[node name="unitList" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/unitContainer"]
+[node name="unitList" type="Panel" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/unitContainer"]
 margin_right = 300.0
 margin_bottom = 400.0
 rect_min_size = Vector2( 300, 400 )
 size_flags_horizontal = 0
 script = ExtResource( 4 )
 
-[node name="GridContainer" type="GridContainer" parent="control/ui/HBoxContainer/VBoxContainer/unitContainer/unitList"]
+[node name="GridContainer" type="GridContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/unitContainer/unitList"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 columns = 4
@@ -91,20 +103,20 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="commandContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
+[node name="commandContainer" type="MarginContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer"]
 margin_top = 408.0
 margin_right = 300.0
 margin_bottom = 708.0
 mouse_filter = 2
 
-[node name="commands" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer"]
+[node name="commands" type="Panel" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer"]
 margin_right = 300.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 300, 300 )
 size_flags_horizontal = 0
 script = ExtResource( 5 )
 
-[node name="GridContainer" type="GridContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands"]
+[node name="GridContainer" type="GridContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer/commands"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 columns = 3
@@ -112,151 +124,36 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="buttonContain" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_right = 80.0
-margin_bottom = 80.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
+[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer/commands/GridContainer"]
+margin_right = 75.0
+margin_bottom = 76.0
+texture_normal = ExtResource( 12 )
 
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
+[node name="TextureButton2" type="TextureButton" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer/commands/GridContainer"]
+margin_left = 79.0
+margin_right = 154.0
+margin_bottom = 76.0
 texture_normal = ExtResource( 8 )
-expand = true
 
-[node name="buttonContain2" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 101.0
-margin_right = 181.0
-margin_bottom = 80.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
+[node name="TextureButton3" type="TextureButton" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer/commands/GridContainer"]
+margin_left = 158.0
+margin_right = 233.0
+margin_bottom = 76.0
+texture_normal = ExtResource( 11 )
 
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain2"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
+[node name="TextureButton4" type="TextureButton" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/commandContainer/commands/GridContainer"]
+margin_top = 80.0
+margin_right = 75.0
+margin_bottom = 156.0
+texture_normal = ExtResource( 7 )
 
-[node name="buttonContain3" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 202.0
-margin_right = 282.0
-margin_bottom = 80.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain3"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain4" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_top = 101.0
-margin_right = 80.0
-margin_bottom = 181.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain4"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain5" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 101.0
-margin_top = 101.0
-margin_right = 181.0
-margin_bottom = 181.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain5"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain6" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 202.0
-margin_top = 101.0
-margin_right = 282.0
-margin_bottom = 181.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain6"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain7" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_top = 202.0
-margin_right = 80.0
-margin_bottom = 282.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain7"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain8" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 101.0
-margin_top = 202.0
-margin_right = 181.0
-margin_bottom = 282.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain8"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="buttonContain9" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer"]
-margin_left = 202.0
-margin_top = 202.0
-margin_right = 282.0
-margin_bottom = 282.0
-size_flags_horizontal = 2
-size_flags_vertical = 2
-script = ExtResource( 7 )
-
-[node name="TextureButton" type="TextureButton" parent="control/ui/HBoxContainer/VBoxContainer/commandContainer/commands/GridContainer/buttonContain9"]
-margin_right = 80.0
-margin_bottom = 80.0
-rect_min_size = Vector2( 80, 80 )
-texture_normal = ExtResource( 8 )
-expand = true
-
-[node name="AdvCommandContainer" type="MarginContainer" parent="control/ui/HBoxContainer/VBoxContainer"]
+[node name="AdvCommandContainer" type="MarginContainer" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer"]
 margin_top = 712.0
 margin_right = 300.0
 margin_bottom = 912.0
 mouse_filter = 2
 
-[node name="commands" type="Panel" parent="control/ui/HBoxContainer/VBoxContainer/AdvCommandContainer"]
+[node name="commands" type="Panel" parent="control/ui/HBoxContainer/TextureRect/VBoxContainer/AdvCommandContainer"]
 margin_right = 300.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
@@ -365,6 +262,9 @@ __meta__ = {
 margin_right = 30.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="topRight" type="Control" parent="control/scrollBoundaries"]
 anchor_left = 1.0
@@ -372,6 +272,9 @@ anchor_right = 1.0
 margin_left = -30.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="bottomLeft" type="Control" parent="control/scrollBoundaries"]
 anchor_left = 1.0
@@ -381,6 +284,9 @@ anchor_bottom = 1.0
 margin_left = -30.0
 margin_top = -30.0
 rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="bottomRight" type="Control" parent="control/scrollBoundaries"]
 anchor_top = 1.0
@@ -388,12 +294,14 @@ anchor_bottom = 1.0
 margin_top = -30.0
 margin_right = 30.0
 rect_min_size = Vector2( 30, 30 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
 
 [node name="level" parent="." instance=ExtResource( 1 )]
 
 [node name="cameraBall" type="KinematicBody" parent="."]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0 )
-visible = false
 collision_mask = 32769
 script = ExtResource( 2 )
 scrollSpeed = 50
@@ -418,8 +326,13 @@ far = 500.0
 enabled = true
 cast_to = Vector3( 0, -1000, 0 )
 
-[connection signal="minimap_clicked" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" to="cameraBall" method="_on_minimap_minimap_clicked"]
-[connection signal="gui_input" from="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/VBoxContainer/mapContainer/minimap" method="_on_mapButton_gui_input"]
+[node name="mouseControl" type="Spatial" parent="."]
+script = ExtResource( 9 )
+
+[node name="Draw" type="ImmediateGeometry" parent="mouseControl"]
+
+[connection signal="minimap_clicked" from="control/ui/HBoxContainer/TextureRect/VBoxContainer/mapContainer/minimap" to="cameraBall" method="_on_minimap_minimap_clicked"]
+[connection signal="gui_input" from="control/ui/HBoxContainer/TextureRect/VBoxContainer/mapContainer/minimap/mapButton" to="control/ui/HBoxContainer/TextureRect/VBoxContainer/mapContainer/minimap" method="_on_mapButton_gui_input"]
 [connection signal="mouse_entered" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_entered"]
 [connection signal="mouse_exited" from="control/scrollBoundaries/topMargin/top" to="cameraBall" method="_on_top_mouse_exited"]
 [connection signal="mouse_entered" from="control/scrollBoundaries/leftMargin/left" to="cameraBall" method="_on_left_mouse_entered"]

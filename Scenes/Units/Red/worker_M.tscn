@@ -11,3 +11,6 @@ albedo_texture = ExtResource( 2 )
 
 [node name="characterLargeMale" parent="Root/Skeleton" index="0"]
 material/0 = SubResource( 1 )
+
+[node name="AnimationPlayer" parent="." index="1"]
+reset_on_save = false

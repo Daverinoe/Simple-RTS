@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://Assets/Models/Pieces/town/wallHalf.glb" type="PackedScene" id=1]
 [ext_resource path="res://Assets/Models/Pieces/town/wall.glb" type="PackedScene" id=2]
@@ -8,10 +8,19 @@
 [ext_resource path="res://Assets/Models/Pieces/town/wallArch.glb" type="PackedScene" id=6]
 [ext_resource path="res://Assets/Models/Pieces/town/wallWindowRound.glb" type="PackedScene" id=7]
 [ext_resource path="res://Assets/Models/Pieces/town/roof.glb" type="PackedScene" id=8]
+[ext_resource path="res://Assets/Textures/select.png" type="Texture" id=9]
+[ext_resource path="res://Scripts/Buildings/building.gd" type="Script" id=10]
+[ext_resource path="res://Assets/Textures/portraits/townHall.png" type="Texture" id=11]
+
+[sub_resource type="BoxShape" id=1]
+extents = Vector3( 2, 1, 1 )
 
 [node name="townHall" type="Spatial"]
+script = ExtResource( 10 )
+portrait = ExtResource( 11 )
 
 [node name="walls" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 1.4 )
 
 [node name="wallSlope" parent="walls" instance=ExtResource( 5 )]
 transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, -1 )
@@ -83,6 +92,7 @@ transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.1, 0,
 transform = Transform( -1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.1, 0, -2 )
 
 [node name="roof" type="Spatial" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.8, 0, 1.4 )
 
 [node name="roofWindow" parent="roof" instance=ExtResource( 3 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2, 1.1, -0.3 )
@@ -110,3 +120,14 @@ transform = Transform( -4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -3.3527
 
 [node name="roof4" parent="roof" instance=ExtResource( 8 )]
 transform = Transform( -4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.1, 1.5, -1 )
+
+[node name="reticle" type="Sprite3D" parent="."]
+transform = Transform( 12, 0, 0, 0, -5.24537e-07, -1, 0, 12, -4.37114e-08, 0.1, 0.2, 0 )
+visible = false
+texture = ExtResource( 9 )
+
+[node name="StaticBody" type="StaticBody" parent="."]
+
+[node name="CollisionShape" type="CollisionShape" parent="StaticBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+shape = SubResource( 1 )
