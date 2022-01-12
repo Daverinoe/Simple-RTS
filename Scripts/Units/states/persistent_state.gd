@@ -2,8 +2,11 @@ extends selectableUnit
 
 class_name PersistentState
 
+onready var level = get_tree().get_root().get_node("game/level")
+
 var state
 var state_factory : StateFactory
+var target_position : Vector3
 
 # Public variables
 var velocity : Vector3 = Vector3()
@@ -27,5 +30,5 @@ func change_state(new_state):
 
 
 func rightClick(pos) -> void:
+	target_position = pos
 	change_state("move")
-	state.target_position = pos

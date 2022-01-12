@@ -55,7 +55,7 @@ func _cast_check_ray() -> Dictionary:
 	var from = camera.project_ray_origin(clickPosition)
 	var to = from + camera.project_ray_normal(clickPosition) * ray_length
 	var space_state = get_world().direct_space_state
-	var result = space_state.intersect_ray(from, to, [self], 1)
+	var result = space_state.intersect_ray(from, to, [self], 3)
 	if result:
 		draw_path([from, result.position])
 	cast_ray = false

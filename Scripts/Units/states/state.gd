@@ -7,7 +7,7 @@ var animation_player
 var persistent_state
 
 func _physics_process(delta) -> void:
-	persistent_state.velocity = persistent_state.move_and_slide(persistent_state.velocity, Vector3.UP)
+	persistent_state.move_and_slide(persistent_state.velocity, Vector3.UP, false, 1)
 
 func setup(change_state, animation_player, persistent_state) -> void:
 	self.change_state = change_state

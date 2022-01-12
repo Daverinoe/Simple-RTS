@@ -13,4 +13,4 @@ func _ready() -> void:
 	var collision_box = mapMesh.get_node("StaticBody/CollisionShape")
 	collision_box.shape.extents = Vector3(mapHeight, 0.1, mapWidth)
 	
-	LevelVariables.navNode = get_node("Navigation")
+
