@@ -23,6 +23,7 @@ func _input(event: InputEvent) -> void:
 		cast_ray = true
 	
 	if event is InputEventMouse and Input.is_action_just_pressed("rightClick"):
+		clickPosition = event.position
 		rightClick = true
 		cast_ray = true
 	
@@ -47,6 +48,7 @@ func _physics_process(_delta: float) -> void:
 			for selected in get_tree().get_nodes_in_group("Selected"):
 				if selected.has_method("rightClick"):
 					selected.rightClick(outcome.position)
+			rightClick = false
 
 
 # Cast a ray into 3D space

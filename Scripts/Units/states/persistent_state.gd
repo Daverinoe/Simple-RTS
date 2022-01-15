@@ -31,4 +31,5 @@ func change_state(new_state):
 
 func rightClick(pos) -> void:
 	target_position = pos
+	print("Setting target position to: " + String(target_position))
 	change_state("move")

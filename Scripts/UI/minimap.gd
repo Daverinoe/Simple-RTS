@@ -20,7 +20,7 @@ func _ready() -> void:
 
 
 func set_texture() -> void:
-	var levelTexture = level.get_node("Navigation/ground/MeshInstance").get_active_material(0).albedo_texture
+	var levelTexture = level.get_node("MeshInstance").get_active_material(0).albedo_texture
 	get_node("mapButton").texture_normal = levelTexture
 
 
