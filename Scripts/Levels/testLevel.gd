@@ -40,7 +40,7 @@ func _ready() -> void:
 # adds all points ot the astar_node, except obstacles
 func astar_add_walkable_cells(obstacles = []) -> PoolVector3Array:
 	var points_array = []
-	for z in range(-mapLength/2, mapLength):
+	for z in range(-mapLength/2, mapLength/2):
 		for y in range(mapHeight):
 			for x in range(-mapWidth/2, mapWidth/2):
 				var point = Vector3(x, y, z)
@@ -82,7 +82,10 @@ func is_outside_map_bounds(point):
 
 
 func calculate_point_index(point):
-	return 256 * (point.x + mapWidth/2 + 1) + 512 * point.y + 1024 * (point.z + mapLength/2 + 1)
+	var px = point.x + ceil(mapWidth/2) + 1
+	var pz = point.z + ceil(mapLength/2) + 1
+	
+	return px + point.y * mapWidth + pz * mapHeight * mapLength
 
 
 func find_path(start_position, end_position) -> PoolVector3Array:

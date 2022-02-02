@@ -38,6 +38,9 @@ albedo_color = Color( 1, 0, 0, 1 )
 
 [node name="level" type="Spatial"]
 script = ExtResource( 1 )
+mapLength = 200
+mapWidth = 200
+mapHeight = 5
 mapMeshPath = NodePath("MeshInstance")
 
 [node name="cameraBounds" type="Spatial" parent="."]
